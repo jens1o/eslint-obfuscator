@@ -20,6 +20,7 @@ var rule = require("../../../lib/rules/obfuscator-linter"),
 var ruleTester = new RuleTester();
 ruleTester.run("obfuscator", rule, {
 
+    // TODO: add cases
     valid: [],
 
     invalid: [
