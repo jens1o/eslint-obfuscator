@@ -24,14 +24,25 @@ ruleTester.run("obfuscator", rule, {
 
     invalid: [
         {
-            code: "let longVariableName = 0;",
-            output: "let _1 = 0;",
+            code: "let longVariableName = foo;",
+            output: "let _1 = foo;",
             parserOptions: {
                 ecmaVersion: 6
             },
             errors: [{
-                message: "Variable names should be longer than 1 character",
+                message: "Variable names shouldn't be longer than 1 character",
                 type: "VariableDeclarator"
+            }]
+        },
+        {
+            code: "let _1 = 0;",
+            output: "let _1 = 0b0;",
+            parserOptions: {
+                ecmaVersion: 6
+            },
+            errors: [{
+                message: "Numbers should be obfuscated",
+                type: "Literal"
             }]
         },
         {
@@ -41,21 +52,21 @@ ruleTester.run("obfuscator", rule, {
                 ecmaVersion: 6
             },
             errors: [{
-                message: "Variable names should be longer than 1 character",
+                message: "Variable names shouldn't be longer than 1 character",
                 type: "VariableDeclarator"
             }]
         },
         {
-            code: "let longVariableName = 0; let secondLongVariableName = foo;",
-            output: "let _1 = 0; let _2 = foo;",
+            code: "let longVariableName = bar; let secondLongVariableName = foo;",
+            output: "let _1 = bar; let _2 = foo;",
             parserOptions: {
                 ecmaVersion: 6
             },
             errors: [{
-                message: "Variable names should be longer than 1 character",
+                message: "Variable names shouldn't be longer than 1 character",
                 type: "VariableDeclarator"
             }, {
-                message: "Variable names should be longer than 1 character",
+                message: "Variable names shouldn't be longer than 1 character",
                 type: "VariableDeclarator"
             }]
         },
