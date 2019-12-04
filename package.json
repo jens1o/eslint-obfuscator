@@ -1,0 +1,20 @@
+{
+  "name": "eslint-plugin-obfuscator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "mocha": "*",
+    "eslint": "*"
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha tests/lib/rules/"
+  },
+  "author": "",
+  "license": "ISC"
+}
